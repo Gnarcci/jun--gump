@@ -1,0 +1,14 @@
+CollisionShape2D
+Area2D
+TileMapLayer
+TileMap
+CharacterBody2D
+RigidBody2D
+GPUParticles2D
+Line2D
+RayCast2D
+VisibleOnScreenNotifier2D
+Marker2D
+AnimationPlayer
+AnimatedSprite2D
+Sprite2D

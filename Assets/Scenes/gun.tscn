@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://hyrf3rv17uoh"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/gun.gd" id="1_k8xdg"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_k8xdg")
+EXPLOSION_FORCE = 600.0

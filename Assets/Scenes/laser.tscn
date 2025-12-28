@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5kmtqm0cddfk"]
+
+[ext_resource type="Script" path="res://laser.gd" id="1_q8uhf"]
+[ext_resource type="Texture2D" uid="uid://gkh4sdq6pgdw" path="res://Assets/Sprites/All_Fire_Bullet_Pixel_16x16_07.png" id="2_e1j2r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rga4s"]
+resource_local_to_scene = true
+radius = 2.0
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_q8uhf")
+
+[node name="test bullet" type="CharacterBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="test bullet"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_rga4s")
+
+[node name="Sprite2D" type="Sprite2D" parent="test bullet"]
+visible = false
+texture = ExtResource("2_e1j2r")
+region_enabled = true
+region_rect = Rect2(432.5, 32.5, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="test bullet"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://74spci28ve2j"]
+
+[ext_resource type="Texture2D" uid="uid://gkh4sdq6pgdw" path="res://Assets/Sprites/All_Fire_Bullet_Pixel_16x16_07.png" id="1_etbi4"]
+[ext_resource type="Script" path="res://Assets/Scenes/bullet.gd" id="1_k43ly"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5qs4v"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ub37r"]
+radius = 2.0
+
+[node name="bullet" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_k43ly")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -4.76837e-07)
+scale = Vector2(0.375, 0.4375)
+texture = ExtResource("1_etbi4")
+region_enabled = true
+region_rect = Rect2(432.5, 32.5, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-9.53674e-07, -9.53674e-07)
+scale = Vector2(0.1, 0.1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_5qs4v")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ub37r")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
