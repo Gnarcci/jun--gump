@@ -8,7 +8,7 @@ var speed_multiplier = 30.0
 var jump_multiplier = -30.0
 var direction = 0
 var knockback : Vector2 = Vector2.ZERO
-var knockback_timer : float = 0.0
+var knockback_mode : bool
 
 signal hit
 
@@ -21,11 +21,11 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if knockback_timer > 0.0:
-		velocity = knockback
-		knockback_timer -= delta
-		if knockback_timer <= 0.0:
-			knockback = Vector2.ZERO
+	if knockback_mode:
+		velocity += knockback + get_gravity() * delta
+		
+		if is_on_floor():
+			knockback_mode = false
 	else:
 		movement(delta)
 		
@@ -45,6 +45,19 @@ func movement(delta: float):
 	
 func apply_knockback(direction: Vector2, force: float, knockback_duration: float) -> void:
 	print("knockback")
-	knockback = direction * force
-	knockback_timer = knockback_duration
-	hit.emit()
+	
+	
+
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("bullet"):
+		if body.bounces > 0:
+			print("OK!")
+			knockback = body.velocity *.2
+			knockback_mode = true
+			hit.emit()
+			body.queue_free()
+			
+			
+			

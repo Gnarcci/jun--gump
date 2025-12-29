@@ -4,3 +4,4 @@
 
 [node name="global" type="Node2D"]
 script = ExtResource("1_500ud")
+EXPLOSION_FORCE = 200
