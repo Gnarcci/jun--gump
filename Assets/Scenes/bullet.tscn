@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://74spci28ve2j"]
 
 [ext_resource type="Texture2D" uid="uid://gkh4sdq6pgdw" path="res://Assets/Sprites/All_Fire_Bullet_Pixel_16x16_07.png" id="1_etbi4"]
-[ext_resource type="Script" path="res://Assets/Scenes/bullet.gd" id="1_k43ly"]
+[ext_resource type="Script" path="res://Assets/Scripts/bullet.gd" id="1_k43ly"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5qs4v"]
 radius = 2.0

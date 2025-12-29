@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5kmtqm0cddfk"]
 
-[ext_resource type="Script" path="res://laser.gd" id="1_q8uhf"]
+[ext_resource type="Script" path="res://Assets/Scripts/laser.gd" id="1_q8uhf"]
 [ext_resource type="Texture2D" uid="uid://gkh4sdq6pgdw" path="res://Assets/Sprites/All_Fire_Bullet_Pixel_16x16_07.png" id="2_e1j2r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rga4s"]

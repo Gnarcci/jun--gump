@@ -1,6 +1,7 @@
 extends Node2D
 @export var sprite : Sprite2D
-@export var EXPLOSION_FORCE : float = 700.0
+
+var EXPLOSION_FORCE : float = Global.EXPLOSION_FORCE
 
 const BULLET = preload("res://Assets/Scenes/bullet.tscn")
 

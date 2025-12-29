@@ -10,6 +10,8 @@ var direction = 0
 var knockback : Vector2 = Vector2.ZERO
 var knockback_timer : float = 0.0
 
+signal hit
+
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0
 
@@ -45,3 +47,4 @@ func apply_knockback(direction: Vector2, force: float, knockback_duration: float
 	print("knockback")
 	knockback = direction * force
 	knockback_timer = knockback_duration
+	hit.emit()

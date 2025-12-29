@@ -4,4 +4,3 @@
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_k8xdg")
-EXPLOSION_FORCE = 600.0

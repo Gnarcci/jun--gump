@@ -142,11 +142,9 @@ region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Gun" parent="." instance=ExtResource("4_l84qj")]
 position = Vector2(0, -7)
-EXPLOSION_FORCE = 400.0
 
 [node name="Laser" parent="." instance=ExtResource("5_18grd")]
 position = Vector2(0, -7)
-EXPLOSION_FORCE = 400.0
 
 [node name="Area2D" type="Area2D" parent="." groups=["Character"]]
 collision_layer = 8
