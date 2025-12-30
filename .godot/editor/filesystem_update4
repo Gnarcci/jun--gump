@@ -1,10 +1,11 @@
-res://Assets/Scenes/player.tscn
-res://Assets/Scripts/bullet.gd
-res://Assets/Scripts/player_contoller.gd
 res://Assets/Scenes/Areas/area_1.tscn
+res://Assets/Scripts/bullet.gd
 res://Assets/Scenes/gun.tscn
+res://Assets/Scenes/player.tscn
 res://Assets/Scenes/laser.tscn
 res://Assets/Scenes/bullet.tscn
 res://Assets/Scenes/global.tscn
-res://Assets/Scripts/laser.gd
+res://Assets/Scenes/Areas/area_1.gd
 res://Assets/Scripts/global.gd
+res://Assets/Scripts/gun.gd
+res://Assets/Scripts/player_contoller.gd
