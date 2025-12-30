@@ -19,6 +19,12 @@ func _physics_process(delta: float) -> void:
 	if bounces >= MAX_BOUNCES:
 		queue_free()
 	velocity = velocity.bounce(collision.get_normal())
+	
+func reflect(player:Node2D) -> void:
+	var relection_direction = (player.global_position - global_position).normalized()
+	velocity = relection_direction * explosion_force 
+	bounces +=1
+	
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
@@ -27,10 +33,3 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print(body)
-
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if bounces > 0:
-		if area.is_in_group("Character"):
-			var relection_direction = (area.global_position - global_position).normalized()
-			bounces +=1

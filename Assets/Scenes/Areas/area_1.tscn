@@ -310,6 +310,7 @@ script = ExtResource("1_4f4dj")
 
 [node name="Player" parent="." instance=ExtResource("2_o8rtg")]
 position = Vector2(0, 0)
+jump_power = 8.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-96, 0)

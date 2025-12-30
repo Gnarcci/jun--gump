@@ -20,14 +20,16 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
-	if knockback_mode:
-		velocity += knockback + get_gravity() * delta
-		
-		if is_on_floor():
-			knockback_mode = false
 	else:
-		movement(delta)
+		velocity.x = move_toward(velocity.x, 0, speed * speed_multiplier)
+
+	#if knockback_mode:
+	#velocity += knockback + (get_gravity() * delta)
+		
+	#if is_on_floor():
+		#knockback_mode = false
+	#else:
+	movement(delta)
 		
 	move_and_slide()
 	
@@ -41,8 +43,8 @@ func movement(delta: float):
 	if direction:
 		velocity.x = direction * speed * speed_multiplier
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed * speed_multiplier)
-	
+		#velocity.x = move_toward(velocity.x, 0, speed * speed_multiplier)
+		pass
 func apply_knockback(direction: Vector2, force: float, knockback_duration: float) -> void:
 	print("knockback")
 	
@@ -54,10 +56,10 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullet"):
 		if body.bounces > 0:
 			print("OK!")
-			knockback = body.velocity *.2
+			knockback = body.velocity 
 			knockback_mode = true
 			hit.emit()
-			body.queue_free()
-			
+			body.reflect(self)
+			velocity += knockback
 			
 			

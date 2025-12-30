@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var EXPLOSION_FORCE : = 500
+@export var EXPLOSION_FORCE : = 1000
 
 
 
