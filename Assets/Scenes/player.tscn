@@ -1,10 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://dji63smso4lrh"]
+[gd_scene load_steps=21 format=3 uid="uid://dji63smso4lrh"]
 
 [ext_resource type="Texture2D" uid="uid://dypa3wxtqolxv" path="res://Assets/Sprites/player.png" id="1_dxg8d"]
 [ext_resource type="Script" path="res://Assets/Scripts/player_contoller.gd" id="1_qrdgi"]
 [ext_resource type="Script" path="res://Assets/Scripts/player_animator.gd" id="2_ng720"]
 [ext_resource type="PackedScene" uid="uid://hyrf3rv17uoh" path="res://Assets/Scenes/gun.tscn" id="4_l84qj"]
 [ext_resource type="PackedScene" uid="uid://c5kmtqm0cddfk" path="res://Assets/Scenes/laser.tscn" id="5_18grd"]
+[ext_resource type="Script" path="res://Assets/Scenes/states.gd" id="6_bykce"]
+[ext_resource type="Script" path="res://Assets/Scenes/idle_state.gd" id="7_3j6sa"]
+[ext_resource type="Script" path="res://Assets/Scenes/run_state.gd" id="7_e3b51"]
+[ext_resource type="Script" path="res://Assets/Scenes/bullet_time_state.gd" id="7_vow35"]
+[ext_resource type="Script" path="res://Assets/Scenes/jump_state.gd" id="8_r6sbb"]
+[ext_resource type="Script" path="res://Assets/Scenes/fall_state.gd" id="9_7gx3n"]
+[ext_resource type="Script" path="res://Assets/Scenes/knockback_state.gd" id="12_8lp0a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s704b"]
 size = Vector2(10, 13.5)
@@ -109,7 +116,6 @@ position = Vector2(0, 7)
 collision_layer = 2
 slide_on_ceiling = false
 script = ExtResource("1_qrdgi")
-speed = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Character"]]
 position = Vector2(0, -6)
@@ -153,5 +159,28 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" groups=["Character"]]
 position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_qgkpb")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("6_bykce")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("7_e3b51")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("8_r6sbb")
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("9_7gx3n")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("7_3j6sa")
+
+[node name="BulletTime" type="Node" parent="StateMachine"]
+script = ExtResource("7_vow35")
+
+[node name="Timer" type="Timer" parent="StateMachine/BulletTime"]
+
+[node name="Knockback" type="Node" parent="StateMachine"]
+script = ExtResource("12_8lp0a")
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

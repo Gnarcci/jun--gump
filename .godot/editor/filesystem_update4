@@ -5,7 +5,11 @@ res://Assets/Scenes/player.tscn
 res://Assets/Scenes/laser.tscn
 res://Assets/Scenes/bullet.tscn
 res://Assets/Scenes/global.tscn
+res://Assets/Scenes/bullet_time_state.gd
 res://Assets/Scenes/Areas/area_1.gd
-res://Assets/Scripts/global.gd
-res://Assets/Scripts/gun.gd
 res://Assets/Scripts/player_contoller.gd
+res://Assets/Scenes/run_state.gd
+res://Assets/Scenes/fall_state.gd
+res://Assets/Scenes/jump_state.gd
+res://Assets/Scenes/knockback_state.gd
+res://Assets/Scenes/idle_state.gd
