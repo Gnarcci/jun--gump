@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b48bsh5cruvex"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/slug.gd" id="1_6yshf"]
+[ext_resource type="Texture2D" uid="uid://gkh4sdq6pgdw" path="res://Assets/Sprites/All_Fire_Bullet_Pixel_16x16_07.png" id="2_h12rx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cf5dk"]
+size = Vector2(14, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ey2kp"]
+size = Vector2(14, 4)
+
+[node name="Slug" type="CharacterBody2D"]
+script = ExtResource("1_6yshf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_h12rx")
+region_enabled = true
+region_rect = Rect2(288.5, 144, 16, 17)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cf5dk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ey2kp")

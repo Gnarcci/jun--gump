@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://hyrf3rv17uoh"]
+[gd_scene load_steps=5 format=3 uid="uid://hyrf3rv17uoh"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/gun.gd" id="1_k8xdg"]
+[ext_resource type="Script" path="res://Assets/Scripts/state_machine.gd" id="2_xnvl8"]
+[ext_resource type="Script" path="res://Assets/Scenes/bullet_state.gd" id="3_0gy23"]
+[ext_resource type="Script" path="res://Assets/Scripts/slug_state.gd" id="4_fahev"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_k8xdg")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_xnvl8")
+
+[node name="Bullet" type="Node" parent="StateMachine"]
+script = ExtResource("3_0gy23")
+
+[node name="Slug" type="Node" parent="StateMachine"]
+script = ExtResource("4_fahev")

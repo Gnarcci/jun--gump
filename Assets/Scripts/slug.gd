@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-var explosion_force = Global.EXPLOSION_FORCE
+var explosion_force = 300
 @onready var gravity :float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var drag : float = ProjectSettings.get_setting("physics/2d/default_linear_damp")
-@export var MAX_BOUNCES = 4 
+@export var MAX_BOUNCES = 3
 
 var bounces : int = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,9 +21,10 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.bounce(collision.get_normal())
 	
 func reflect(player:Node2D) -> void:
-	var relection_direction = (player.global_position - global_position).normalized()
-	velocity = relection_direction * explosion_force 
-	bounces +=1
+	if player.is_in_group("Character"):
+		var relection_direction = (player.global_position - global_position).normalized()
+		velocity = relection_direction * explosion_force 
+		bounces +=1
 	
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
