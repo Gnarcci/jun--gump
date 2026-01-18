@@ -123,7 +123,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullet"):
 		if body.bounces > 0:
 			print("OK!")
-			knockback = body.velocity
+			knockback = body.velocity * body.knockback
 			hit.emit()
 			body.reflect(self)
 			change_state(states.knockback)

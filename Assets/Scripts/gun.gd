@@ -1,8 +1,10 @@
 extends Node2D
 @export var sprite : Sprite2D
+@onready var animation_player = $Sprite2D/AnimationPlayer
 
 var EXPLOSION_FORCE : float = Global.EXPLOSION_FORCE
 var state_array = []
+var previous_weapon_index = 0
 var weapon_index = 0
 var current_state
 var previous_state
@@ -15,6 +17,7 @@ func _ready() -> void:
 		state.gun = self
 		state_array.append(state)
 	current_state = states.bullet
+	change_state(current_state)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("next_weapon"):
@@ -30,8 +33,10 @@ func check_weapon():
 		weapon_index = state_array.size() - 1
 	if weapon_index > state_array.size() - 1:
 		weapon_index = 0
-	next_state = state_array[weapon_index]
-	change_state(next_state)
+	if weapon_index != previous_weapon_index:
+		previous_weapon_index = weapon_index
+		next_state = state_array[weapon_index]
+		change_state(next_state)
 	
 
 func change_state(next_state):
@@ -41,6 +46,7 @@ func change_state(next_state):
 		previous_state.exit()
 		current_state.enter()
 		print("from " + previous_state.TYPE + " to " + current_state.TYPE)
+		animation_player.play(current_state.TYPE)
 		
 func fire(projectile : PackedScene):
 	var bullet_instance = projectile.instantiate()

@@ -1,25 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://74spci28ve2j"]
+[gd_scene load_steps=5 format=3 uid="uid://wlkoftka8ogb"]
 
-[ext_resource type="Texture2D" uid="uid://gkh4sdq6pgdw" path="res://Assets/Sprites/All_Fire_Bullet_Pixel_16x16_07.png" id="1_etbi4"]
-[ext_resource type="Script" path="res://Assets/Scripts/bullet.gd" id="1_k43ly"]
+[ext_resource type="Script" path="res://Assets/Scenes/buckshot.gd" id="1_ukjec"]
+[ext_resource type="Texture2D" uid="uid://gkh4sdq6pgdw" path="res://Assets/Sprites/All_Fire_Bullet_Pixel_16x16_07.png" id="2_4tswx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5qs4v"]
-radius = 2.0
+radius = 11.0454
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ub37r"]
-radius = 2.0
+radius = 11.0
 
-[node name="bullet" type="CharacterBody2D" groups=["bullet"]]
+[node name="buckshot" type="CharacterBody2D" groups=["bullet"]]
 collision_layer = 12
 collision_mask = 9
-script = ExtResource("1_k43ly")
+script = ExtResource("1_ukjec")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -4.76837e-07)
-scale = Vector2(0.375, 0.4375)
-texture = ExtResource("1_etbi4")
+texture = ExtResource("2_4tswx")
 region_enabled = true
-region_rect = Rect2(432.5, 32.5, 16, 16)
+region_rect = Rect2(240, 288, 16, 16)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -37,6 +35,8 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ub37r")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

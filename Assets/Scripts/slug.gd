@@ -4,7 +4,7 @@ var explosion_force = 300
 @onready var gravity :float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var drag : float = ProjectSettings.get_setting("physics/2d/default_linear_damp")
 @export var MAX_BOUNCES = 3
-
+var knockback = 1.5
 var bounces : int = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

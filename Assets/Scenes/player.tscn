@@ -123,8 +123,8 @@ shape = SubResource("RectangleShape2D_s704b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 1)
-offset = Vector2(0, -15)
-zoom = Vector2(2, 2)
+offset = Vector2(0, -30)
+zoom = Vector2(3, 3)
 
 [node name="PlayerAnimator" type="Node2D" parent="." node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
 script = ExtResource("2_ng720")

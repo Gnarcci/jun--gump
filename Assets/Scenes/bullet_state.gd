@@ -5,6 +5,7 @@ const TYPE = "Bullet"
 func enter():
 	scene = BULLET
 	force = 1000
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

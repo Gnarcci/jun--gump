@@ -5,7 +5,7 @@ extends PlayerState
 
 	
 func enter():
-	timer.wait_time = .2
+	timer.wait_time = .5
 	timer.one_shot = true
 	string = "bullet time"
 	if timer.is_stopped():
