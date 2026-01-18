@@ -1,7 +1,7 @@
 extends PlayerState
 
 @onready var timer: Timer = $Timer
-
+var bullet_time_speed_multiplier = 8
 
 	
 func enter():
@@ -22,7 +22,6 @@ func draw():
 	
 func update(delta: float):
 	print(timer.time_left)
-	player.handle_gravity(delta, 0)
 	handle_bullet_time_movement()
 	handle_idle()
 	
@@ -31,11 +30,15 @@ func handle_bullet_time_movement():
 	
 	if direction_x:
 		player.velocity.x = direction_x * player.speed * player.speed_multiplier
+	else:
+		player.velocity.x = move_toward(player.velocity.x, 0, bullet_time_speed_multiplier)
 		
 	var direction_y = Input.get_axis("move_up", "move_down")
 	
 	if direction_y:
-		player.velocity.y = direction_y * player.speed * player.speed_multiplier
+		player.velocity.y = direction_y * player.speed * player.speed_multiplier	
+	else:
+		player.velocity.y = move_toward(player.velocity.y, 0, bullet_time_speed_multiplier)
 		
 func handle_idle():
 	if player.is_on_floor():

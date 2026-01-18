@@ -18,6 +18,7 @@ func _ready() -> void:
 		state_array.append(state)
 	current_state = states.bullet
 	change_state(current_state)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("next_weapon"):
@@ -46,7 +47,7 @@ func change_state(next_state):
 		previous_state.exit()
 		current_state.enter()
 		print("from " + previous_state.TYPE + " to " + current_state.TYPE)
-		animation_player.play(current_state.TYPE)
+		
 		
 func fire(projectile : PackedScene):
 	var bullet_instance = projectile.instantiate()

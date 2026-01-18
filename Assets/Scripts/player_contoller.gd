@@ -14,9 +14,9 @@ var key_jump = false
 var key_jump_pressed = false
 var key_bullet_time = false
 
-
-var speed_multiplier = 30.0
-var air_control = 3
+var friction = 15
+var speed_multiplier = 20.0
+var air_control = 1
 var jump_multiplier = -30.0
 var direction = 0
 var knockback : Vector2 = Vector2.ZERO
@@ -84,12 +84,12 @@ func handle_horizontal_movement():
 	if direction:
 		velocity.x = direction * speed * speed_multiplier
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed * speed_multiplier)
+		velocity.x = move_toward(velocity.x, 0, friction)
 			
 func handle_air_movement():
 	direction = Input.get_axis("move_left", "move_right")
 	
-	if velocity.x < direction*speed*speed_multiplier or velocity.x > direction*speed*speed_multiplier:
+	if (direction == 1 and velocity.x < speed*speed_multiplier) or (direction == -1 and velocity.x > -1*speed*speed_multiplier):
 		velocity.x += direction * speed * air_control
 			#velocity.x = move_toward(velocity.x, 0, speed * speed_multiplier)
 func apply_knockback(direction: Vector2, force: float, knockback_duration: float) -> void:
@@ -121,7 +121,7 @@ func handle_bullet_time():
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullet"):
-		if body.bounces > 0:
+		if body.collision_ready and !is_on_floor():
 			print("OK!")
 			knockback = body.velocity * body.knockback
 			hit.emit()

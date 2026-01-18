@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://dji63smso4lrh"]
+[gd_scene load_steps=22 format=3 uid="uid://dji63smso4lrh"]
 
 [ext_resource type="Texture2D" uid="uid://dypa3wxtqolxv" path="res://Assets/Sprites/player.png" id="1_dxg8d"]
 [ext_resource type="Script" path="res://Assets/Scripts/player_contoller.gd" id="1_qrdgi"]
 [ext_resource type="Script" path="res://Assets/Scripts/player_animator.gd" id="2_ng720"]
+[ext_resource type="Script" path="res://Assets/Scenes/label.gd" id="2_p0ubn"]
 [ext_resource type="PackedScene" uid="uid://hyrf3rv17uoh" path="res://Assets/Scenes/gun.tscn" id="4_l84qj"]
 [ext_resource type="PackedScene" uid="uid://c5kmtqm0cddfk" path="res://Assets/Scenes/laser.tscn" id="5_18grd"]
 [ext_resource type="Script" path="res://Assets/Scripts/states.gd" id="6_bykce"]
@@ -125,6 +126,15 @@ shape = SubResource("RectangleShape2D_s704b")
 position = Vector2(0, 1)
 offset = Vector2(0, -30)
 zoom = Vector2(3, 3)
+
+[node name="Label" type="Label" parent="Camera2D"]
+offset_left = -191.0
+offset_top = -137.0
+offset_right = -151.0
+offset_bottom = -114.0
+scale = Vector2(1.66748, 1.52167)
+text = "test"
+script = ExtResource("2_p0ubn")
 
 [node name="PlayerAnimator" type="Node2D" parent="." node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
 script = ExtResource("2_ng720")

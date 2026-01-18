@@ -6,8 +6,8 @@ var knockback = -500
 @onready var drag : float = ProjectSettings.get_setting("physics/2d/default_linear_damp")
 @export var MAX_BOUNCES = 1
 @onready var timer: Timer = $Timer
-
-var bounces : int = 1
+var collision_ready = true
+var bounces : int = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	velocity.y += delta

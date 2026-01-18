@@ -6,6 +6,7 @@ var gun = null
 var scene : PackedScene
 var type : String
 var force
+var sprite
 
 
 func enter():
