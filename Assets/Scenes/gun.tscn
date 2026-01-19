@@ -1,82 +1,221 @@
-[gd_scene load_steps=12 format=3 uid="uid://hyrf3rv17uoh"]
+[gd_scene load_steps=15 format=3 uid="uid://hyrf3rv17uoh"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/gun.gd" id="1_k8xdg"]
 [ext_resource type="Script" path="res://Assets/Scripts/state_machine.gd" id="2_xnvl8"]
 [ext_resource type="Script" path="res://Assets/Scenes/bullet_state.gd" id="3_0gy23"]
 [ext_resource type="Script" path="res://Assets/Scripts/slug_state.gd" id="4_fahev"]
 [ext_resource type="Script" path="res://Assets/Scenes/buck_shot.gd" id="5_wpu5n"]
-[ext_resource type="Texture2D" uid="uid://cx7s3dcq0y54n" path="res://Assets/Sprites/path1.svg" id="6_dl1ot"]
+[ext_resource type="Texture2D" uid="uid://brjwarcghf4y8" path="res://InkScape/slug.png" id="6_137qx"]
+[ext_resource type="Script" path="res://Assets/Scenes/gun_animator.gd" id="6_dcet8"]
+[ext_resource type="Texture2D" uid="uid://nq3qd2rgexr2" path="res://InkScape/buckshot.png" id="7_srap8"]
+[ext_resource type="Texture2D" uid="uid://cnnutsa1g25jc" path="res://InkScape/bullet.png" id="8_1ggpr"]
 
 [sub_resource type="Animation" id="Animation_qy78c"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:region_rect")
+tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(85, 106, 35, 8)]
+"update": 1,
+"values": [null]
 }
-
-[sub_resource type="Animation" id="Animation_6i7vn"]
-resource_name = "Slug"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(121, 5, 24, 10)]
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Marker2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, -13)]
 }
 
 [sub_resource type="Animation" id="Animation_fl74w"]
 resource_name = "buckshot"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:region_rect")
+tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(85, 106, 35, 8)]
+"values": [ExtResource("7_srap8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Marker2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, -13)]
 }
 
 [sub_resource type="Animation" id="Animation_sq3o5"]
 resource_name = "bullet"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:region_rect")
+tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_1ggpr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(13, 79, 9, 7)]
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Marker2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(47, -13)]
+}
+
+[sub_resource type="Animation" id="Animation_6i7vn"]
+resource_name = "slug"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_137qx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Marker2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, -6)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_joob2"]
 _data = {
 "RESET": SubResource("Animation_qy78c"),
-"Slug": SubResource("Animation_6i7vn"),
 "buckshot": SubResource("Animation_fl74w"),
-"bullet": SubResource("Animation_sq3o5")
+"bullet": SubResource("Animation_sq3o5"),
+"slug": SubResource("Animation_6i7vn")
 }
 
-[node name="Gun" type="Node2D"]
+[node name="Gun" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_k8xdg")
+sprite = NodePath("GunAnimator/Sprite2D")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_xnvl8")
@@ -90,14 +229,22 @@ script = ExtResource("4_fahev")
 [node name="Buckshot" type="Node" parent="StateMachine"]
 script = ExtResource("5_wpu5n")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(8, 0)
-scale = Vector2(0.03, 0.03)
-texture = ExtResource("6_dl1ot")
-region_rect = Rect2(85, 106, 35, 8)
+[node name="GunAnimator" type="Node2D" parent="." node_paths=PackedStringArray("gun_controller", "animation_player", "sprite")]
+script = ExtResource("6_dcet8")
+gun_controller = NodePath("..")
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+[node name="Sprite2D" type="Sprite2D" parent="GunAnimator"]
+position = Vector2(24, 0)
+region_rect = Rect2(13, 79, 9, 7)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GunAnimator"]
+root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_joob2")
 }
+autoplay = "bullet"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(96, -13)

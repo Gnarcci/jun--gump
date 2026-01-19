@@ -12,7 +12,6 @@ func handle_flip_h():
 	elif player_controller.direction == -1:
 		sprite.flip_h = true
 	
-
 #func _process(delta):
 	#if player_controller.direction == 1:
 		#sprite.flip_h = false

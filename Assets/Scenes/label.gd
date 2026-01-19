@@ -8,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.text = gun.current_state.TYPE
+	self.text = gun.gun_animator.animation_player.current_animation

@@ -59,6 +59,13 @@ func get_input_states():
 	
 	if key_right: facing = 1
 	if key_left: facing = -1
+	
+	var mouse_position = get_global_mouse_position()
+
+	if mouse_position.x > position.x:
+		animation_player.sprite.flip_h = false
+	elif mouse_position.x < position.x:
+		animation_player.sprite.flip_h = true
 
 	
 func change_state(next_state):
@@ -118,17 +125,18 @@ func handle_bullet_time():
 	if key_bullet_time:
 		change_state(states.bullet_time)
 		print("ye[]")
+		
+func handle_knockback(body: Node2D):
+	knockback = body.velocity * body.knockback
+	hit.emit()
+	body.reflect(self)
+	change_state(states.knockback)
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullet"):
 		if body.collision_ready and !is_on_floor():
-			print("OK!")
-			knockback = body.velocity * body.knockback
-			hit.emit()
-			body.reflect(self)
-			change_state(states.knockback)
-			
-			
+			handle_knockback(body)
+
 
 
 func _on_area_1_bullet_time() -> void:

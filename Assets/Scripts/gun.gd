@@ -1,6 +1,8 @@
 extends Node2D
+class_name Gun
 @export var sprite : Sprite2D
-@onready var animation_player = $Sprite2D/AnimationPlayer
+@onready var gun_animator = $GunAnimator
+
 
 var EXPLOSION_FORCE : float = Global.EXPLOSION_FORCE
 var state_array = []
@@ -9,6 +11,7 @@ var weapon_index = 0
 var current_state
 var previous_state
 var next_state
+@onready var muzzle: Marker2D = $Marker2D
 @onready var states = $StateMachine
 
 func _ready() -> void:
@@ -28,6 +31,12 @@ func _process(delta: float) -> void:
 	check_weapon()
 	if Input.is_action_just_pressed("fire"):
 		fire(current_state.scene)
+	look_at(get_global_mouse_position())
+	rotation_degrees = wrap(rotation_degrees,0,360)
+	if rotation_degrees > 90 and rotation_degrees < 270:
+		sprite.flip_v = true
+	else: 
+		sprite.flip_v = false
 		
 func check_weapon():
 	if weapon_index < 0:
@@ -52,7 +61,7 @@ func change_state(next_state):
 func fire(projectile : PackedScene):
 	var bullet_instance = projectile.instantiate()
 	get_tree().root.add_child(bullet_instance)
-	bullet_instance.global_position = global_position
+	bullet_instance.global_position = muzzle.global_position
 	bullet_instance.velocity = current_state.force * get_forward_direction()
 
 

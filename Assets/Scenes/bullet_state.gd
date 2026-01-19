@@ -5,7 +5,7 @@ const TYPE = "Bullet"
 func enter():
 	scene = BULLET
 	force = 1000
-	
+	gun.gun_animator.play("bullet")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

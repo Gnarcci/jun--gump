@@ -24,4 +24,4 @@ func handle_idle():
 		
 func handle_animations():
 	player.animation_player.play("move")
-	player.animation_player.handle_flip_h()
+	

@@ -22,11 +22,12 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.bounce(collision.get_normal())
 	
 func _ready() -> void:
-	timer.wait_time = .022
+	timer.wait_time = .01
 	timer.one_shot = true
 	if timer.is_stopped():
 		timer.start()
 	timer.timeout.connect(_on_timer_timeout)
+	self.rotation = velocity.angle()
 	
 func reflect(player:Node2D) -> void:
 	var relection_direction = (player.global_position - global_position).normalized()

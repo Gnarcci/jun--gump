@@ -1,9 +1,9 @@
 extends GunState
 const SCENE = preload("res://Assets/Scenes/buckshot.tscn")
-const SPRITE = preload("res://Assets/Sprites/buckshot.png")
+const SPRITE = preload("res://InkScape/buckshot.png")
 const TYPE = "Buckshot"
-
+var image = Image.new()
 func enter():
 	scene = SCENE
 	force = 1
-	sprite = SPRITE
+	gun.gun_animator.play("buckshot")

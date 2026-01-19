@@ -17,6 +17,7 @@ func _ready() -> void:
 	if timer.is_stopped():
 		timer.start()
 	timer.timeout.connect(_on_timer_timeout)
+	self.rotation = velocity.angle()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	velocity.y += delta

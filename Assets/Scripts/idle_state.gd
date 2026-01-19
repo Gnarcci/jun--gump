@@ -21,4 +21,4 @@ func update(delta:float):
 
 func handle_animations():
 	player.animation_player.play("idle")
-	player.animation_player.handle_flip_h()
+	

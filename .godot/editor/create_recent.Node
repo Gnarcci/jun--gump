@@ -1,5 +1,7 @@
-Label
 Timer
+Marker2D
+Node2D
+Label
 AnimationPlayer
 AnimatedSprite2D
 Sprite2D
@@ -8,7 +10,5 @@ CollisionShape2D
 Area2D
 VisibleOnScreenNotifier2D
 CharacterBody2D
-Node2D
 TileMapLayer
 TileMap
-RigidBody2D

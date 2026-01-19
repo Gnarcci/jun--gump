@@ -17,5 +17,4 @@ func handle_fall():
 
 func handle_animations():
 	player.animation_player.play("jump")
-	player.animation_player.handle_flip_h()
 	
