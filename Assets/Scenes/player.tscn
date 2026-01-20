@@ -125,15 +125,15 @@ shape = SubResource("RectangleShape2D_s704b")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 1)
 offset = Vector2(0, -30)
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
 
 [node name="Label" type="Label" parent="Camera2D"]
 z_index = -1
-offset_left = -191.0
-offset_top = -137.0
-offset_right = -151.0
-offset_bottom = -114.0
-scale = Vector2(1.66748, 1.52167)
+offset_left = -143.0
+offset_top = -111.0
+offset_right = -5.0
+offset_bottom = -67.0
+scale = Vector2(1, 0.913)
 text = "test"
 script = ExtResource("2_p0ubn")
 
